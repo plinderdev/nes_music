@@ -3,3 +3,7 @@
 .pixel_font {
     font-family: "Press Start 2P", sans-serif;
 }
+
+.red-text {
+    color: red;
+}

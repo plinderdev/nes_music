@@ -1,9 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="text-white pixel_font">Plinder</h1>
-    <a class="btn btn-secondary mb-4" href="https://www.youtube.com/@plinderweb" target="_blank">@plinderweb</a>
-    <p class="text-white">Index of NES music at YouTube channel</p>
+    <div class="mb-5">
+        <h1 class="text-white pixel_font">Plinder</h1>
+        <a class="btn btn-secondary mb-4" href="https://www.youtube.com/@plinderweb" target="_blank">@plinderweb</a>
+        <p class="text-white">Quick, searchable index of songs found at my YouTube channel. More detailed info for each song found at each video's YouTube page.</p>
+    </div>
 
-
+    {% block table %}
+        <table class="table table-light table-striped rounded-3 overflow-hidden">
+            <thead>
+                <tr>
+                    <th scope="col">Count</th>
+                    <th scope="col">Game</th>
+                    <th scope="col">Song</th>
+                    <th scope="col">Composer</th>
+                    <th scope="col">Add. personnel</th>
+                    <th scope="col">Developer</th>
+                    <th scope="col">Publisher</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">More info</th>
+                    <th scope="col">Date uploaded</th>
+                    <th scope="col">Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cell in table %}
+                    <tr>
+                        <td>{{ cell.Video.id }}</td>
+                        <td>{{ cell.Video.game }}</td>
+                        <td>{{ cell.Video.song }}</td>
+                        <td>{{ cell.Video.composer }}</td>
+                        <td>{{ cell.Video.add_personnel }}</td>
+                        <td>{{ cell.Video.developer }}</td>
+                        <td>{{ cell.Video.publisher }}</td>
+                        <td>{{ cell.Video.year }}</td>
+                        <td>{{ cell.Video.description }}</td>
+                        <td>{{ cell.Video.more_info }}</td>
+                        <td>{{ cell.Video.date_uploaded }}</td>
+                        <td>{{ cell.Video.link }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endblock table %}
 {% endblock content %}

@@ -12,7 +12,9 @@
 <body class="bg-dark">
     <main class="container pt-4">
         <div>
-            {% block content %}{% endblock content %}
+            {% block content %}
+                {% block table %}{% endblock table %}
+            {% endblock content %}
         </div>
     </main>
 
