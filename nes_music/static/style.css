@@ -4,6 +4,20 @@
     font-family: "Press Start 2P", sans-serif;
 }
 
-.red-text {
-    color: red;
+/*.red-text {*/
+/*    color: red;*/
+/*}*/
+
+/*a {*/
+/*    color: red;*/
+/*}*/
+
+/*a:hover {*/
+/*    color: #ce0000;*/
+/*}*/
+
+table tbody tr:last-child {
+    /*border: none;*/
 }
+
+
