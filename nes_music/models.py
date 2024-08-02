@@ -76,6 +76,9 @@ class Company(db.Model):
         return (f"<id = {self.id},"
                 f"name = {self.name}")
 
+    # Info re relationship to same table using multiple FKs:
+    # https://stackoverflow.com/questions/65941555/sqlalchemy-error-multiple-foreign-keys-references-to-the-same-table-and-column/65994756#65994756
+
 
 
 class Video(db.Model):
