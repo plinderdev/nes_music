@@ -692,7 +692,7 @@ data = [
         song_id=1,
         description="End music for Power Blade on the Nintendo Entertainment System.",
         process_note="I used Game Genie code YANNLTZA, which immediately shows the ending after starting a game.",
-        upload_date=datetime(2024, 6, 26, 7, 54, 16),
+        upload_date=datetime(2024, 6, 26, 19, 54, 16),
         link="https://youtu.be/RKpMkeXW97I"
     ),
     Video(
@@ -756,7 +756,7 @@ data = [
         description="Demon boss battle music for Puss 'n Boots: Pero's Great Adventure on the Nintendo Entertainment System.",
         desc_note="The original composition is a loop roughly 15 seconds long; my edited version loops that hot jam part of the song.",
         process_note="I made a new NSFe file in FamiStudio, where I’d edited the original composition to contain the looping that I wanted it to. I played through the game with no cheats to make it to the Demon boss.",
-        upload_date=datetime(2024, 7, 1, 8, 31, 23),
+        upload_date=datetime(2024, 7, 1, 16, 31, 23),
         link="https://youtu.be/FpcauB7hMiA"
     ),
     Video(
@@ -777,54 +777,47 @@ data = [
         link="https://youtu.be/wX_h5qwyZvE"
     ),
     Video(
-        id=,
-        game_id=,
-        song_id=,
-        description="",
-        desc_note="",
-        process_note="",
-        upload_date=,
-        link=""
+        id=11,
+        game_id=11,
+        song_id=11,
+        description="Music for Dream 4 of Little Nemo: The Dream Master on the Nintendo Entertainment System.",
+        process_note="Used code LEUKOZAA to start at Dream 4.",
+        upload_date=datetime(2024, 7, 6, 10, 58, 0),
+        link="https://youtu.be/LTH8Uafc4s4"
     ),
     Video(
-        id=,
-        game_id=,
-        song_id=,
-        description="",
-        desc_note="",
-        process_note="",
-        upload_date=,
-        link=""
+        id=12,
+        game_id=12,
+        song_id=12,
+        description="Music for World 1 of Treasure Master on the Nintendo Entertainment System.",
+        upload_date=datetime(2024, 7, 6, 13, 5, 13),
+        link="https://youtu.be/76IXi7BaM_g"
     ),
     Video(
-        id=,
-        game_id=,
-        song_id=,
-        description="",
-        desc_note="",
-        process_note="",
-        upload_date=,
-        link=""
+        id=13,
+        game_id=13,
+        song_id=13,
+        description="End music for Vice: Project Doom on the Nintendo Entertainment System.",
+        desc_note="In-game music loops only about twice, as opposed to three times here.",
+        process_note="Code APOVPGIP used to start at ending cutscene.",
+        upload_date=datetime(2024, 7, 13, 19, 46, 8),
+        link="https://youtu.be/bEQuwWaiICg"
     ),
     Video(
-        id=,
-        game_id=,
-        song_id=,
-        description="",
-        desc_note="",
-        process_note="",
-        upload_date=,
-        link=""
+        id=14,
+        game_id=1,
+        song_id=14,
+        description="Music for Sector 2 of Power Blade on the Nintendo Entertainment System.",
+        upload_date=datetime(2024, 7, 17, 19, 7, 24),
+        link="https://youtu.be/bSxrPxOSGqI"
     ),
     Video(
-        id=,
-        game_id=,
-        song_id=,
-        description="",
-        desc_note="",
-        process_note="",
-        upload_date=,
-        link=""
+        id=15,
+        game_id=14,
+        song_id=15,
+        description="Music for World 6 map of Super Mario Bros. 3 on the Nintendo Entertainment System.",
+        upload_date=datetime(2024, 7, 24, 15, 7, 1),
+        link="https://youtu.be/01zp01JtkIg"
     ),
     Video(
         id=,
