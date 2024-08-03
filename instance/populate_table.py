@@ -11,37 +11,6 @@ from nes_music.models import Video
 # session = Session(engine)
 
 data = [
-    # Video(
-    #     id=1,
-    #     game='Power Blade',
-    #     song='"Ending" [Soundtrack]',
-    #     composer='Kinuyo Yamashita',
-    #     add_personnel='',
-    #     developer='Natsume/Taito',
-    #     publisher='Taito',
-    #     year='1991',
-    #     description='End music for Power Blade on the Nintendo Entertainment System.',
-    #     more_info='',
-    #     date_uploaded=datetime(2024, 6, 26, 7, 54, 16),
-    #     link='https://youtu.be/RKpMkeXW97I',
-    #     process_note='I used Game Genie code YANNLTZA, which immediately shows the ending after starting a game.',
-    # ),
-    # Video(
-    #     id=2,
-    #     game='Kabuki: Quantum Fighter',
-    #     song='“Round 5” [Soundtrack]',
-    #     composer='Masaki Hashimoto, Takahiro Wakuta',
-    #     add_personnel='',
-    #     developer='Human Entertainment',
-    #     publisher='HAL Laboratory,',
-    #     year='1991',
-    #     description='Music for Round 5 of Kabuki: Quantum Fighter on the Nintendo Entertainment System.',
-    #     more_info='',
-    #     date_uploaded=datetime(2024, 6, 27, 9, 18, 39),
-    #     link='https://youtu.be/YfCrVB27I40',
-    #     process_note='I used Game Genie codes AVUUZPSZ+ESUZGAEY to have invincibility, then played to Round 5.',
-    # ),
-
     # Company
     Company(
         id=1,
@@ -691,24 +660,231 @@ data = [
         composer_id=13
     ),
     SongMusician(
-        id=,
-        song_id=,
-        composer_id=
+        id=38,
+        song_id=19,
+        composer_id=27
     ),
     SongMusician(
-        id=,
-        song_id=,
-        composer_id=
+        id=39,
+        song_id=20,
+        composer_id=28
     ),
     SongMusician(
-        id=,
-        song_id=,
-        composer_id=
+        id=40,
+        song_id=20,
+        composer_id=29
     ),
     SongMusician(
+        id=41,
+        song_id=21,
+        composer_id=30
+    ),
+    SongMusician(
+        id=42,
+        song_id=21,
+        composer_id=31
+    ),
+
+    # Video
+    Video(
+        id=1,
+        game_id=1,
+        song_id=1,
+        description="End music for Power Blade on the Nintendo Entertainment System.",
+        process_note="I used Game Genie code YANNLTZA, which immediately shows the ending after starting a game.",
+        upload_date=datetime(2024, 6, 26, 7, 54, 16),
+        link="https://youtu.be/RKpMkeXW97I"
+    ),
+    Video(
+        id=2,
+        game_id=2,
+        song_id=2,
+        description="Music for Round 5 of Kabuki: Quantum Fighter on the Nintendo Entertainment System.",
+        process_note="I used Game Genie codes AVUUZPSZ+ESUZGAEY to have invincibility, then played to Round 5.",
+        upload_date=datetime(2024, 6, 27, 9, 18, 39),
+        link="https://youtu.be/YfCrVB27I40"
+    ),
+    Video(
+        id=3,
+        game_id=3,
+        song_id=3,
+        description="Prologue music for The Adventures of Tom Sawyer on the Nintendo Entertainment System.",
+        process_note="Only about 13 of about 28 seconds of the original composition appear in the game.",
+        upload_date=datetime(2024, 6, 27, 16, 33, 17),
+        link="https://youtu.be/aosXPQeTND8"
+    ),
+    Video(
+        id=4,
+        game_id=4,
+        song_id=4,
+        description="Unused music for Hebereke on the Nintendo Famicon.",
+        desc_note="The original NSFe file is 25 seconds long and doesn't loop.",
+        process_note="I used cheat code 0505:00 to slowly descend. I played the game to reach the point shown in the video.",
+        upload_date=datetime(2024, 6, 27,19, 49, 9),
+        link="https://youtu.be/kBG86jKnw24"
+    ),
+    Video(
+        id=5,
+        game_id=5,
+        song_id=5,
+        description="Introductory and Stage 1 music for The Adventures of Bayou Billy on the Nintendo Entertainment System.",
+        process_note="Songs combined by me.",
+        upload_date=datetime(2024, 6, 29, 10, 40, 28),
+        link="https://youtu.be/TM8C-_dHt-w"
+    ),
+    Video(
+        id=6,
+        game_id=6,
+        song_id=6,
+        description="Title screen music for Journey to Silius on the Nintendo Entertainment System.",
+        upload_date=datetime(2024, 6, 30, 11, 32, 40),
+        link="https://youtu.be/QQrjegx0B8w"
+    ),
+    Video(
+        id=7,
+        game_id=7,
+        song_id=7,
+        description='"Underground" and "Underground" paused music for Super Mario Bros. 2 on the Nintendo Entertainment System.',
+        process_note='I personally discovered the glitch when playing the game a few months before I made the video: throwing the potion at the top of the screen, then entering the door, causes the character to appear at the bottom of the screen when exiting the door in the subspace. Also, there was no pause music in the game’s NSFe files, so I deleted the square channels using FamiStudio to create a new NSFe file of “Underground paused”.',
+        upload_date=datetime(2024, 6, 30, 15, 6, 41),
+        link="https://youtu.be/nO2fhOmDdVk"
+    ),
+    Video(
+        id=8,
+        game_id=8,
+        song_id=8,
+        description="Demon boss battle music for Puss 'n Boots: Pero's Great Adventure on the Nintendo Entertainment System.",
+        desc_note="The original composition is a loop roughly 15 seconds long; my edited version loops that hot jam part of the song.",
+        process_note="I made a new NSFe file in FamiStudio, where I’d edited the original composition to contain the looping that I wanted it to. I played through the game with no cheats to make it to the Demon boss.",
+        upload_date=datetime(2024, 7, 1, 8, 31, 23),
+        link="https://youtu.be/FpcauB7hMiA"
+    ),
+    Video(
+        id=9,
+        game_id=9,
+        song_id=9,
+        description="In-game music for Spy vs. Spy on the Nintendo Entertainment System.",
+        upload_date=datetime(2024, 7, 2, 16, 48, 23),
+        link="https://youtu.be/uiiSrFWOn7U"
+    ),
+    Video(
+        id=10,
+        game_id=10,
+        song_id=10,
+        description="First-stage final boss music for Ninja Gaiden on the Nintendo Entertainment System.",
+        process_note="I used invincibility codes 0095:02+0093:80, then played through to first final boss.",
+        upload_date=datetime(2024, 7, 6, 11, 44, 26),
+        link="https://youtu.be/wX_h5qwyZvE"
+    ),
+    Video(
         id=,
+        game_id=,
         song_id=,
-        composer_id=
+        description="",
+        desc_note="",
+        process_note="",
+        upload_date=,
+        link=""
+    ),
+    Video(
+        id=,
+        game_id=,
+        song_id=,
+        description="",
+        desc_note="",
+        process_note="",
+        upload_date=,
+        link=""
+    ),
+    Video(
+        id=,
+        game_id=,
+        song_id=,
+        description="",
+        desc_note="",
+        process_note="",
+        upload_date=,
+        link=""
+    ),
+    Video(
+        id=,
+        game_id=,
+        song_id=,
+        description="",
+        desc_note="",
+        process_note="",
+        upload_date=,
+        link=""
+    ),
+    Video(
+        id=,
+        game_id=,
+        song_id=,
+        description="",
+        desc_note="",
+        process_note="",
+        upload_date=,
+        link=""
+    ),
+    Video(
+        id=,
+        game_id=,
+        song_id=,
+        description="",
+        desc_note="",
+        process_note="",
+        upload_date=,
+        link=""
+    ),
+    Video(
+        id=,
+        game_id=,
+        song_id=,
+        description="",
+        desc_note="",
+        process_note="",
+        upload_date=,
+        link=""
+    ),
+    Video(
+        id=,
+        game_id=,
+        song_id=,
+        description="",
+        desc_note="",
+        process_note="",
+        upload_date=,
+        link=""
+    ),
+    Video(
+        id=,
+        game_id=,
+        song_id=,
+        description="",
+        desc_note="",
+        process_note="",
+        upload_date=,
+        link=""
+    ),
+    Video(
+        id=,
+        game_id=,
+        song_id=,
+        description="",
+        desc_note="",
+        process_note="",
+        upload_date=,
+        link=""
+    ),
+    Video(
+        id=,
+        game_id=,
+        song_id=,
+        description="",
+        desc_note="",
+        process_note="",
+        upload_date=,
+        link=""
     ),
 ]
 
