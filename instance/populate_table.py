@@ -756,7 +756,7 @@ data = [
         description="Demon boss battle music for Puss 'n Boots: Pero's Great Adventure on the Nintendo Entertainment System.",
         desc_note="The original composition is a loop roughly 15 seconds long; my edited version loops that hot jam part of the song.",
         process_note="I made a new NSFe file in FamiStudio, where I’d edited the original composition to contain the looping that I wanted it to. I played through the game with no cheats to make it to the Demon boss.",
-        upload_date=datetime(2024, 7, 1, 16, 31, 23),
+        upload_date=datetime(2024, 7, 1, 20, 31, 23),
         link="https://youtu.be/FpcauB7hMiA"
     ),
     Video(
@@ -820,64 +820,54 @@ data = [
         link="https://youtu.be/01zp01JtkIg"
     ),
     Video(
-        id=,
-        game_id=,
-        song_id=,
-        description="",
-        desc_note="",
-        process_note="",
-        upload_date=,
-        link=""
+        id=16,
+        game_id=15,
+        song_id=16,
+        description="Introductory music for Gimmick! on the Nintendo Famicom.",
+        upload_date=datetime(2024, 7, 26, 15, 18, 31),
+        link="https://youtu.be/Xz9clrgOMyQ"
     ),
     Video(
-        id=,
-        game_id=,
-        song_id=,
-        description="",
-        desc_note="",
-        process_note="",
-        upload_date=,
-        link=""
+        id=17,
+        game_id=16,
+        song_id=17,
+        description="Field stages music for Crystalis on the Nintendo Entertainment System.",
+        upload_date=datetime(2024, 7, 27, 10, 56, 50),
+        link="https://youtu.be/9WELHVZK-C8"
     ),
     Video(
-        id=,
-        game_id=,
-        song_id=,
-        description="",
-        desc_note="",
-        process_note="",
-        upload_date=,
-        link=""
+        id=18,
+        game_id=6,
+        song_id=18,
+        description="Music for Stage 2 of Journey to Silius on the Nintendo Entertainment System.",
+        upload_date=datetime(2024, 7, 28, 10, 4, 7),
+        link="https://youtu.be/XvzH6QA_NN4"
     ),
     Video(
-        id=,
-        game_id=,
-        song_id=,
-        description="",
-        desc_note="",
-        process_note="",
-        upload_date=,
-        link=""
+        id=19,
+        game_id=17,
+        song_id=19,
+        description="Music for Level 10 of Battletoads on the Nintendo Entertainment System.",
+        process_note='I used “Infinite Energy” code SUXTZESO till Surf City, I think, when I still lost energy hitting things. I then switched to “Infinite Energy” code 051A:47 till I got to Level 10. I also needed to use the “Complete Level Now” code 03C3:7F a couple times while playing. Once I got to the end of the Rat Race, I hit the rat and got the glitch where he went through the wall, softlocking the game.',
+        upload_date=datetime(2024, 7, 31, 19, 0, 25),
+        link="https://youtu.be/ep98aOd7pSk"
     ),
     Video(
-        id=,
-        game_id=,
-        song_id=,
-        description="",
-        desc_note="",
-        process_note="",
-        upload_date=,
-        link=""
+        id=20,
+        game_id=18,
+        song_id=20,
+        description="End music for Shadow of the Ninja on the Nintendo Entertainment System.",
+        process_note="I used the in-game code found at tcrf.net to choose Stage 4-3 (I couldn’t choose Stage 5 levels because they require two controllers to execute); I then used invincibility code 0601:26 and played to the ending.",
+        upload_date=datetime(2024, 8, 1, 19, 8, 42),
+        link="https://youtu.be/khDLuFcUEsA"
     ),
     Video(
-        id=,
-        game_id=,
-        song_id=,
-        description="",
-        desc_note="",
-        process_note="",
-        upload_date=,
-        link=""
+        id=21,
+        game_id=19,
+        song_id=21,
+        description="Music for Level 3 of Kirby's Adventure on the Nintendo Entertainment System.",
+        upload_date=datetime(2024, 8, 2, 18, 33, 37),
+        link="https://youtu.be/bZn8e75aRl4"
     ),
 ]
 
