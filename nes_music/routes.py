@@ -11,18 +11,18 @@ from nes_music.models import (Game, Song, SongMusician, Musician, Company,
 @app.route("/")
 @app.route("/index")
 def index():
-    Game_alias = aliased(Game, name="Game_alias")
+    Company_alias = aliased(Company, name="Company_alias")
 
     table = db.session.execute(
-        select(Game, Game_alias, Song, SongMusician, Musician, Company, Video)
-        .outerjoin(Game, Company.id == Game.developer_id)
-        .outerjoin(Game_alias, Company.id == Game_alias.publisher_id)
+        select(Game, Company_alias, Song, Company, Video) # SongMusician, Musician,
+        .outerjoin(Company, Game.developer_id == Company.as_dev)
+        .outerjoin(Company_alias, Game.publisher_id == Company_alias.as_pub)
         .filter(
             Song.game_id == Game.id,
-            SongMusician.song_id == Song.id,
-            Musician.id == SongMusician.composer_id,
-            Game.developer_id == Game.developer_id,
-            Game.publisher_id == Game.publisher_id,
+            # SongMusician.song_id == Song.id,
+            # Musician.id == SongMusician.composer_id,
+            # Game.developer_id == Company.as_dev,
+            # Game.publisher_id == Company_alias.as_pub,
             Video.song_id == Song.id
         )
         .order_by(Video.upload_date.desc())
