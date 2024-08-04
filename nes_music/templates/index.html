@@ -29,13 +29,15 @@
                             <td>{{ cell.Game.id }}</td>
                             <td>{{ cell.Game.name }}</td>
                             <td>{{ cell.Song.name }}</td>
-{#                            <td>{{ cell.SongMusician.composer.name }}</td>#}
-{#                            <td>{{ cell.SongMusician.arranger.name }}</td>#}
+                            <td>{{ cell.SongMusician.composer.name }}</td>
+                            <td>{{ cell.SongMusician.arranger.name }}</td>
                             <td>{{ cell.Game.developer.name }}</td>
                             <td>{{ cell.Game.publisher.name }}</td>
                             <td>{{ cell.Game.year }}</td>
                             <td>{{ cell.Video.upload_date.strftime('%-m/%d/%y') }}</td>
-                            <td><a class="link-secondary" href="{{ cell.Video.link }}" target="_blank">Video</a></td>
+                            <td>
+                                <a class="link-secondary" href="{{ cell.Video.link }}" target="_blank">Video</a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
