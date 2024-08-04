@@ -4,7 +4,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
 from nes_music import db
-from nes_music.models import Video
+from nes_music.models import (Company, Game, Musician,
+                              Song, SongMusician, Video)
 
 
 # engine = create_engine("sqlite:///nes_music.db")
@@ -575,112 +576,112 @@ data = [
         composer_id=17
     ),
     SongMusician(
-        id=21,
+        id=22,
         song_id=9,
         arranger_id=18
     ),
     SongMusician(
-        id=22,
+        id=23,
         song_id=10,
         composer_id=19
     ),
     SongMusician(
-        id=23,
+        id=24,
         song_id=10,
         composer_id=20
     ),
     SongMusician(
-        id=24,
+        id=25,
         song_id=10,
         composer_id=21
     ),
     SongMusician(
-        id=25,
+        id=26,
         song_id=11,
         composer_id=22
     ),
     SongMusician(
-        id=26,
+        id=27,
         song_id=12,
         composer_id=23
     ),
     SongMusician(
-        id=27,
+        id=28,
         song_id=13,
         composer_id=24
     ),
     SongMusician(
-        id=28,
+        id=29,
         song_id=14,
         composer_id=1
     ),
     SongMusician(
-        id=29,
+        id=30,
         song_id=15,
         composer_id=14
     ),
     SongMusician(
-        id=30,
+        id=31,
         song_id=16,
         composer_id=25
     ),
     SongMusician(
-        id=31,
+        id=32,
         song_id=16,
         composer_id=12
     ),
     SongMusician(
-        id=32,
+        id=33,
         song_id=17,
         composer_id=26
     ),
     SongMusician(
-        id=33,
+        id=34,
         song_id=18,
         composer_id=4
     ),
     SongMusician(
-        id=34,
+        id=35,
         song_id=18,
         composer_id=5
     ),
     SongMusician(
-        id=35,
+        id=36,
         song_id=18,
         composer_id=6
     ),
     SongMusician(
-        id=36,
+        id=37,
         song_id=18,
         composer_id=12
     ),
     SongMusician(
-        id=37,
+        id=38,
         song_id=18,
         composer_id=13
     ),
     SongMusician(
-        id=38,
+        id=39,
         song_id=19,
         composer_id=27
     ),
     SongMusician(
-        id=39,
+        id=40,
         song_id=20,
         composer_id=28
     ),
     SongMusician(
-        id=40,
+        id=41,
         song_id=20,
         composer_id=29
     ),
     SongMusician(
-        id=41,
+        id=42,
         song_id=21,
         composer_id=30
     ),
     SongMusician(
-        id=42,
+        id=43,
         song_id=21,
         composer_id=31
     ),
@@ -869,6 +870,10 @@ data = [
         upload_date=datetime(2024, 8, 2, 18, 33, 37),
         link="https://youtu.be/bZn8e75aRl4"
     ),
+
+    # Playlist
+
+    #PlaylistVideo
 ]
 
 

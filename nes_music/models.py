@@ -55,10 +55,10 @@ class Musician(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
 
-    as_composer = db.relationship("song_musician",
+    as_composer = db.relationship("SongMusician",
                                   foreign_keys=[SongMusician.composer_id],
                                   back_populates="composer")
-    as_arranger = db.relationship("song_musician",
+    as_arranger = db.relationship("SongMusician",
                                   foreign_keys=[SongMusician.arranger_id],
                                   back_populates="arranger")
 
