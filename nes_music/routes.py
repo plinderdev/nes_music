@@ -41,27 +41,14 @@ def index():
         all_composers.append(song_composers)
         all_arrangers.append(song_arrangers)
 
-    print(all_composers)
-    print(all_arrangers)
-
-
-
     table = db.session.execute(
-            select(Game, Song, Video) # SongMusician,
-            # .outerjoin(Musician, SongMusician.composer_id == Musician.as_composer)
+            select(Game, Song, Video)
             .filter(
                 Song.game_id == Game.id,
-                # SongMusician.song_id == Song.id,
                 Video.song_id == Song.id
                 )
             .order_by(Video.upload_date.desc())
             ).all()
-
-
-
-    # for s in songs:
-    #     if s.SongMusician.composer:
-    #         print(s.Song.id, s.SongMusician.composer.name)
 
     return render_template("index.html", table=table,
                            composers=all_composers,

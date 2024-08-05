@@ -12,7 +12,7 @@
             <table class="table table-light table-striped-columns rounded-3 overflow-hidden">
                 <thead>
                     <tr>
-                        <th scope="col">Count</th>
+                        <th scope="col">Rows</th>
                         <th scope="col">Game</th>
                         <th scope="col">Song</th>
                         <th scope="col">Composer(s)</th>
@@ -26,17 +26,21 @@
                 <tbody class="table-group-divider">
                     {% for row in table %}
                         <tr>
-                            <td>{{ row.Song.id }}</td>
+{#                            <td>{{ row.Song.id }}</td>#}
                             <td>{{ row.Game.name }}</td>
                             <td>{{ row.Song.name }}</td>
                             <td>
-                                {% for c in composers[row.Song.id] %}
-                                    <span>{{ c }}</span><span>,</span>
-                                {% endfor %}
-                                {% for a in arrangers[row.Song.id] %}
-                                    </br>
-                                    <span>Arranged by </span><span>{{ a }}</span><span>,</span>
-                                {% endfor %}
+                                {% if composers[row.Song.id] %}
+                                    {% for c in composers[row.Song.id] %}
+                                        <span>{{ c }}</span><span>,</span>
+                                    {% endfor %}
+                                    {% for a in arrangers[row.Song.id] %}
+                                        <br>
+                                        <span>Arranged by </span><span>{{ a }}</span><span>,</span>
+                                    {% endfor %}
+                                {% else %}
+                                    <span>Unknown composer</span>
+                                {%  endif %}
                             </td>
 {#                            <td>{{ row.SongMusician.composer.name }}</td>#}
 {#                            <td>{{ row.SongMusician.arranger.name }}</td>#}
