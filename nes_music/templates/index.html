@@ -24,22 +24,29 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                    {% for cell in table %}
+                    {% for row in table %}
                         <tr>
-                            <td>{{ cell.Game.id }}</td>
-                            <td>{{ cell.Game.name }}</td>
-                            <td>{{ cell.Song.name }}</td>
-                            <td>{{ cell.SongMusician.composer.name }}</td>
-                            <td>{{ cell.SongMusician.arranger.name }}</td>
-                            <td>{{ cell.Game.developer.name }}</td>
-                            <td>{{ cell.Game.publisher.name }}</td>
-                            <td>{{ cell.Game.year }}</td>
-                            <td>{{ cell.Video.upload_date.strftime('%-m/%d/%y') }}</td>
+                            <td>{{ row.Song.id }}</td>
+                            <td>{{ row.Game.name }}</td>
+                            <td>{{ row.Song.name }}</td>
                             <td>
-                                <a class="link-secondary" href="{{ cell.Video.link }}" target="_blank">Video</a>
+                                {% for c in composers[row.Song.id - 1] %}
+                                    <span>{{ c }}</span></br>
+                                {% endfor %}
+                            </td>
+{#                            <td>{{ row.SongMusician.composer.name }}</td>#}
+{#                            <td>{{ row.SongMusician.arranger.name }}</td>#}
+                            <td>{{ row.Game.developer.name }}</td>
+                            <td>{{ row.Game.publisher.name }}</td>
+                            <td>{{ row.Game.year }}</td>
+                            <td>{{ row.Video.upload_date.strftime('%-m/%d/%y') }}</td>
+                            <td>
+                                <a class="link-secondary" href="{{ row.Video.link }}" target="_blank">Video</a>
                             </td>
                         </tr>
                     {% endfor %}
+
+                    <td>{{ song_ids }}</td>
                 </tbody>
             </table>
         </div>
