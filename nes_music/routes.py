@@ -16,11 +16,12 @@ def index():
                .order_by(Song.id) # not desc because appending names below makes it desc
                )
 
-    ids = []
+    ids = [0] # put 0 here and I don't need to subtract 1 at html composer td
     for s in song_ids_query:
         ids.append(s.Song.id)
 
     all_composers = []
+    all_arrangers = []
     for id in ids:
         songs = db.session.execute(
             select(SongMusician)
@@ -30,15 +31,18 @@ def index():
             )
 
         song_composers = []
+        song_arrangers = []
         for s in songs:
             if s.SongMusician.composer:
                 song_composers.append(s.SongMusician.composer.name)
+            if s.SongMusician.arranger:
+                song_arrangers.append(s.SongMusician.arranger.name)
 
         all_composers.append(song_composers)
+        all_arrangers.append(song_arrangers)
 
     print(all_composers)
-
-
+    print(all_arrangers)
 
 
 
@@ -59,4 +63,6 @@ def index():
     #     if s.SongMusician.composer:
     #         print(s.Song.id, s.SongMusician.composer.name)
 
-    return render_template("index.html", table=table, composers=all_composers)
+    return render_template("index.html", table=table,
+                           composers=all_composers,
+                           arrangers=all_arrangers)

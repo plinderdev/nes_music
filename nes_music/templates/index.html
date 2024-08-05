@@ -30,8 +30,12 @@
                             <td>{{ row.Game.name }}</td>
                             <td>{{ row.Song.name }}</td>
                             <td>
-                                {% for c in composers[row.Song.id - 1] %}
-                                    <span>{{ c }}</span></br>
+                                {% for c in composers[row.Song.id] %}
+                                    <span>{{ c }}</span><span>,</span>
+                                {% endfor %}
+                                {% for a in arrangers[row.Song.id] %}
+                                    </br>
+                                    <span>Arranged by </span><span>{{ a }}</span><span>,</span>
                                 {% endfor %}
                             </td>
 {#                            <td>{{ row.SongMusician.composer.name }}</td>#}
@@ -45,8 +49,6 @@
                             </td>
                         </tr>
                     {% endfor %}
-
-                    <td>{{ song_ids }}</td>
                 </tbody>
             </table>
         </div>

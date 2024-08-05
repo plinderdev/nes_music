@@ -1,0 +1,1 @@
+// remove comma from last span with comma; td, give id
