@@ -2,7 +2,7 @@
 Author:           Plinder
 Program name:     NES music index
 Version:          1.0
-Date:             July 2024
+Date:             July–August 2024
 Description:      Index of music posted to YouTube channel:
                   https://www.youtube.com/@plinderweb
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= """

@@ -32,14 +32,14 @@
                             <td>
                                 {% if composers[row.Song.id] %}
                                     {% for c in composers[row.Song.id] %}
-                                        <span>{{ c }}</span><span>,</span>
+                                        <span>{{ c }}</span><span class="comma">,</span>
                                     {% endfor %}
                                     {% for a in arrangers[row.Song.id] %}
                                         <br>
-                                        <span>Arranged by </span><span>{{ a }}</span><span>,</span>
+                                        <span>Arranged by </span><span>{{ a }}</span><span class="comma">,</span>
                                     {% endfor %}
                                 {% else %}
-                                    <span>Unknown composer</span>
+                                    Unknown composer
                                 {%  endif %}
                             </td>
 {#                            <td>{{ row.SongMusician.composer.name }}</td>#}
