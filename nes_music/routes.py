@@ -49,6 +49,32 @@ def songs_alphabetically():
                            game_first_letters=game_first_letters)
 
 
+@app.route("/company")
+def company():
+    table = db.session.execute(
+        select(Company, Game, Song, Video)
+        .filter(Song.game_id == Game.id,
+                Video.song_id == Song.id)
+        .order_by(Company.name, Video.upload_date.desc())
+        ).all()
+
+    all_composers, all_arrangers = get_all_musicians()
+
+    for row in table:
+        print(row.Company.name)
+
+    company_first_letters = []
+    for row in table:
+        if row.Company.name[0] not in company_first_letters:
+            company_first_letters.append(row.Company.name[0])
+
+    return render_template("company.html",
+                           table=table,
+                           composers=all_composers,
+                           arrangers=all_arrangers,
+                           company_first_letters=company_first_letters)
+
+
 def get_all_musicians():
     song_query = db.session.execute(select(Song))
 
