@@ -2,18 +2,12 @@
 
 {% set active_page = "index" %}
 
-{#{% block description %}#}
-{#    <div>#}
-{#        <p class="text-white">{{ description }}</p>#}
-{#    </div>#}
-{#{% endblock description %}#}
-
-{% block table %}
+{% block content %}
     <div class="table-responsive">
         <table class="table table-light table-striped-columns rounded-3 overflow-hidden">
             <thead>
                 <tr>
-                    <th scope="col">Rows</th>
+                    <th scope="col">Row</th>
                     <th scope="col">Game</th>
                     <th scope="col">Song</th>
                     <th scope="col">Composer(s)</th>
@@ -58,4 +52,4 @@
             </tbody>
         </table>
     </div>
-{% endblock table %}
+{% endblock content %}

@@ -22,7 +22,8 @@ function shiftThe() {
 
     for (let c = 0; c < cells.length; c += 1) {
         if (cells[c].innerText.includes(the)) {
-            let moveThe = cells[c].innerText.substring(cells[c].innerText.length - 3);
+            let moveThe =
+                cells[c].innerText.substring(cells[c].innerText.length - 3);
             let newString = cells[c].innerText.replace(moveThe, "");
             newString = moveThe.concat(" ", newString);
             newString = newString.slice(0, -2);  // Remove comma and space

@@ -37,10 +37,16 @@ def songs_alphabetically():
 
     all_composers, all_arrangers = get_all_musicians()
 
+    game_first_letters = []
+    for row in table:
+        if row.Game.name[0] not in game_first_letters:
+            game_first_letters.append(row.Game.name[0])
+
     return render_template("songs_alphabetically.html",
                            table=table,
                            composers=all_composers,
-                           arrangers=all_arrangers)
+                           arrangers=all_arrangers,
+                           game_first_letters=game_first_letters)
 
 
 def get_all_musicians():
