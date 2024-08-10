@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% set active_page = "songs_alphabetically" %}
+
 {#{% block description %}#}
 {#    <div>#}
 {#        <p class="text-white">{{ description }}</p>#}
@@ -29,13 +31,17 @@
                         <td>{{ row.Song.name }}</td>
                         <td>
                             {% if composers[row.Song.id] %}
-                                {% for c in composers[row.Song.id] %}
-                                    <span>{{ c }}</span><span class="comma">,</span>
-                                {% endfor %}
-                                {% for a in arrangers[row.Song.id] %}
-                                    <br>
-                                    <span>Arranged by </span><span>{{ a }}</span><span class="comma">,</span>
-                                {% endfor %}
+                                <span>
+                                    {% for c in composers[row.Song.id] %}
+                                        <span>{{ c }}</span><span class="comma">,</span>
+                                    {% endfor %}
+                                </span>
+                                <br>
+                                <span>
+                                    {% for a in arrangers[row.Song.id] %}
+                                        <span>Arranged by </span><span>{{ a }}</span><span class="comma">,</span>
+                                    {% endfor %}
+                                </span>
                             {% else %}
                                 Unknown composer
                             {%  endif %}

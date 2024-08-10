@@ -11,8 +11,6 @@ from nes_music.models import (Game, Song, SongMusician, Musician, Company,
 @app.route("/")
 @app.route("/index")
 def index():
-    description = "Videos by upload date"
-
     table = db.session.execute(
         select(Game, Song, Video)
         .filter(Song.game_id == Game.id,
@@ -23,7 +21,6 @@ def index():
     all_composers, all_arrangers = get_all_musicians()
 
     return render_template("index.html",
-                           description=description,
                            table=table,
                            composers=all_composers,
                            arrangers=all_arrangers)
@@ -31,8 +28,6 @@ def index():
 
 @app.route("/songs_alphabetically")
 def songs_alphabetically():
-    description = "Videos by game, alphabetically"
-
     table = db.session.execute(
         select(Game, Song, Video)
         .filter(Song.game_id == Game.id,
@@ -44,7 +39,6 @@ def songs_alphabetically():
 
     return render_template("songs_alphabetically.html",
                            table=table,
-                           description=description,
                            composers=all_composers,
                            arrangers=all_arrangers)
 
