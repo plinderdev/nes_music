@@ -11,24 +11,59 @@ from nes_music.models import (Game, Song, SongMusician, Musician, Company,
 @app.route("/")
 @app.route("/index")
 def index():
-    song_ids_query = db.session.execute(
-               select(Song)
-               .order_by(Song.id) # not desc because appending names below makes it desc
-               )
+    description = "Videos by upload date"
 
-    ids = [0] # put 0 here and I don't need to subtract 1 at html composer td
-    for s in song_ids_query:
-        ids.append(s.Song.id)
+    table = db.session.execute(
+        select(Game, Song, Video)
+        .filter(Song.game_id == Game.id,
+                Video.song_id == Song.id)
+        .order_by(Video.upload_date.desc())
+        ).all()
+
+    all_composers, all_arrangers = get_all_musicians()
+
+    return render_template("index.html",
+                           description=description,
+                           table=table,
+                           composers=all_composers,
+                           arrangers=all_arrangers)
+
+
+@app.route("/songs_alphabetically")
+def songs_alphabetically():
+    description = "Videos by game, alphabetically"
+
+    table = db.session.execute(
+        select(Game, Song, Video)
+        .filter(Song.game_id == Game.id,
+                Video.song_id == Song.id)
+        .order_by(Game.name, Video.upload_date.desc())
+        ).all()
+
+    all_composers, all_arrangers = get_all_musicians()
+
+    return render_template("songs_alphabetically.html",
+                           table=table,
+                           description=description,
+                           composers=all_composers,
+                           arrangers=all_arrangers)
+
+
+def get_all_musicians():
+    song_query = db.session.execute(select(Song))
+
+    song_ids = [0]  # 0 added here allows list index to match Song.id
+    for song_id in song_query:
+        song_ids.append(song_id.Song.id)  # Creates list of desc ids
 
     all_composers = []
     all_arrangers = []
-    for id in ids:
+    for song_id in song_ids:
         songs = db.session.execute(
             select(SongMusician)
             .filter(SongMusician.song_id == Song.id,
-                    Song.id == id)
-            .order_by(Song.id.desc())
-            )
+                    Song.id == song_id)
+        )
 
         song_composers = []
         song_arrangers = []
@@ -41,15 +76,4 @@ def index():
         all_composers.append(song_composers)
         all_arrangers.append(song_arrangers)
 
-    table = db.session.execute(
-            select(Game, Song, Video)
-            .filter(
-                Song.game_id == Game.id,
-                Video.song_id == Song.id
-                )
-            .order_by(Video.upload_date.desc())
-            ).all()
-
-    return render_template("index.html", table=table,
-                           composers=all_composers,
-                           arrangers=all_arrangers)
+    return all_composers, all_arrangers

@@ -12,9 +12,32 @@
 <body class="bg-dark">
     <main class="container pt-4">
         <div>
-            {% block content %}
-                {% block table %}{% endblock table %}
-            {% endblock content %}
+            <div class="mb-4">
+                <h1 class="text-white pixel_font">Plinder</h1>
+                <a class="btn btn-secondary mb-4" href="https://www.youtube.com/@plinderweb" target="_blank">@plinderweb</a>
+                <p class="text-white">Index of songs found at my YouTube channel.</p>
+            </div>
+            <hr class="border border-danger opacity-100 mb-4">
+            <div class="container mb-5">
+                <div class="row g-3">
+                    <div class="col-auto">
+                        <a class="btn btn-secondary" href="{{ url_for('index') }}">Upload date</a>
+                    </div>
+                    <div class="col-auto">
+                        <a class="btn btn-secondary" href="{{ url_for('songs_alphabetically') }}">Game</a>
+                    </div>
+                    <div class="col-auto">
+                        <a class="btn btn-secondary" href="#">Company</a>
+                    </div>
+                    <div class="col-auto">
+                        <a class="btn btn-secondary" href="#">Composer</a>
+                    </div>
+                </div>
+
+            </div>
+
+            {% block description %}{% endblock description %}
+            {% block table %}{% endblock table %}
         </div>
     </main>
 
