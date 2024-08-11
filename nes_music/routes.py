@@ -61,7 +61,7 @@ def company():
     for c in companies:
         company_ids.append(c.Company.id)
 
-    # These are the data objects
+    # These are the data objects:
     table = []
     for company_id in company_ids:
         developer = db.session.execute(
@@ -96,7 +96,6 @@ def company():
             company_first_letters.append(row.Game.developer.name[0])
         if row.Game.publisher.name[0] not in company_first_letters:
             company_first_letters.append(row.Game.publisher.name[0])
-    print(company_first_letters)
 
     return render_template("company.html",
                            companies=companies,
