@@ -51,76 +51,59 @@ def game():
 
 @app.route("/company")
 def company():
+    # Query used to create company_ids list and for comparison at company.html
     companies = db.session.execute(
                 select(Company)
                 .order_by(Company.name)
                 ).all()
-    # for c in companies:
-        # print(c.Company.name)
 
     company_ids = []
     for c in companies:
         company_ids.append(c.Company.id)
-    # print(company_ids)
 
-    companies_list = []
+    # These are the data objects
+    table = []
     for company_id in company_ids:
         developer = db.session.execute(
                     select(Game, Song, Video)
                     .filter(Song.game_id == Game.id,
                             Video.song_id == Song.id,
                             Game.developer_id == company_id)
+                    .order_by(Game.name, Video.upload_date.desc())
                     ).all()
         if developer:
-            companies_list.append(developer)
-    # print(developers)
-    #
-    # publishers = []
-    # for company_id in company_ids:
+            for row in developer:  # This pops each row out of developer list
+                if row not in table:
+                    table.append(row)
+
         publisher = db.session.execute(
                     select(Game, Song, Video)
                     .filter(Song.game_id == Game.id,
                             Video.song_id == Song.id,
                             Game.publisher_id == company_id)
+                    .order_by(Game.name, Video.upload_date.desc())
                     ).all()
         if publisher:
-            companies_list.append(publisher)
-    # print(publishers)
-
-    new_companies_list = []
-    for company in companies_list:
-        for row in company:
-            if row not in new_companies_list:
-            # if row.Game.developer_id == row.Game.publisher_id:
-            #     if row not in new_companies_list:
-                new_companies_list.append(row)
-            # else:
-            #     new_companies_list.append(row)
-                print(row)
-
-    # for row in new_companies_list:
-    #     print(row.Game.name)
+            for row in publisher:  # This pops each row out of publisher list
+                if row not in table:
+                    table.append(row)
 
     all_composers, all_arrangers = get_all_musicians()
 
-    letters = db.session.execute(
-            select(Game, Song, Video)
-            .filter(Song.game_id == Game.id,
-                    Video.song_id == Song.id)
-            ).all()
     company_first_letters = []
-    for row in letters:
-        if row.Game.developer.name[0] or row.Game.publisher.name[0] not in company_first_letters:
+    for row in table:
+        if row.Game.developer.name[0] not in company_first_letters:
             company_first_letters.append(row.Game.developer.name[0])
+        if row.Game.publisher.name[0] not in company_first_letters:
             company_first_letters.append(row.Game.publisher.name[0])
+    print(company_first_letters)
 
     return render_template("company.html",
                            companies=companies,
-                           table=new_companies_list,
+                           table=table,
                            composers=all_composers,
                            arrangers=all_arrangers,
                            company_first_letters=company_first_letters)
-
 
 
 def get_all_musicians():
