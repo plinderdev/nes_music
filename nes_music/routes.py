@@ -26,8 +26,8 @@ def index():
                            arrangers=all_arrangers)
 
 
-@app.route("/songs_alphabetically")
-def songs_alphabetically():
+@app.route("/games_alphabetically")
+def games_alphabetically():
     table = db.session.execute(
         select(Game, Song, Video)
         .filter(Song.game_id == Game.id,
@@ -42,7 +42,7 @@ def songs_alphabetically():
         if row.Game.name[0] not in game_first_letters:
             game_first_letters.append(row.Game.name[0])
 
-    return render_template("songs_alphabetically.html",
+    return render_template("games_alphabetically.html",
                            table=table,
                            composers=all_composers,
                            arrangers=all_arrangers,
