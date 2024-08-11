@@ -27,10 +27,9 @@ table tbody tr:last-child {
     border: none;
 }
 
-div table:last-child {
-    background-color: red;
-    margin-bottom: 0;
-}
+/*div table {*/
+/*    background-color: red;*/
+/*}*/
 
 /* For final comma in td span */
 .comma:last-child {

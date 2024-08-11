@@ -18,12 +18,12 @@ def index():
             .order_by(Video.upload_date.desc())
             ).all()
 
-    all_composers, all_arrangers = get_all_musicians()
+    composers, arrangers = get_all_musicians()
 
     return render_template("index.html",
                            table=table,
-                           composers=all_composers,
-                           arrangers=all_arrangers)
+                           composers=composers,
+                           arrangers=arrangers)
 
 
 @app.route("/game")
@@ -35,7 +35,7 @@ def game():
             .order_by(Game.name, Video.upload_date.desc())
             ).all()
 
-    all_composers, all_arrangers = get_all_musicians()
+    composers, arrangers = get_all_musicians()
 
     game_first_letters = []
     for row in table:
@@ -44,8 +44,8 @@ def game():
 
     return render_template("game.html",
                            table=table,
-                           composers=all_composers,
-                           arrangers=all_arrangers,
+                           composers=composers,
+                           arrangers=arrangers,
                            game_first_letters=game_first_letters)
 
 
@@ -88,7 +88,7 @@ def company():
                 if row not in table:
                     table.append(row)
 
-    all_composers, all_arrangers = get_all_musicians()
+    composers, arrangers = get_all_musicians()
 
     company_first_letters = []
     for row in table:
@@ -100,8 +100,8 @@ def company():
     return render_template("company.html",
                            companies=companies,
                            table=table,
-                           composers=all_composers,
-                           arrangers=all_arrangers,
+                           composers=composers,
+                           arrangers=arrangers,
                            company_first_letters=company_first_letters)
 
 
@@ -112,8 +112,8 @@ def get_all_musicians():
     for song_id in song_query:
         song_ids.append(song_id.Song.id)  # Creates list of desc ids
 
-    all_composers = []
-    all_arrangers = []
+    composers = []
+    arrangers = []
     for song_id in song_ids:
         songs = db.session.execute(
             select(SongMusician)
@@ -129,7 +129,7 @@ def get_all_musicians():
             if s.SongMusician.arranger:
                 song_arrangers.append(s.SongMusician.arranger.name)
 
-        all_composers.append(song_composers)
-        all_arrangers.append(song_arrangers)
+        composers.append(song_composers)
+        arrangers.append(song_arrangers)
 
-    return all_composers, all_arrangers
+    return composers, arrangers

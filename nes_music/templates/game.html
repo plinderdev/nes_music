@@ -20,7 +20,7 @@
         <p id="{{ letter }}" class="pixel_font text-light h4 mt-5">{{ letter }}</p>
 
         <div class="table-responsive">
-            <table class="table table-light table-striped-columns rounded-3 overflow-hidden">
+            <table class="table table-secondary table-striped-columns rounded-3 overflow-hidden">
                 <thead>
                     <tr>
                         <th scope="col">Row</th>
@@ -50,9 +50,12 @@
                                         </span>
                                         <br>
                                         <span>
-                                            {% for a in arrangers[row.Song.id] %}
-                                                <span>Arranged by </span><span>{{ a }}</span><span class="comma">,</span>
-                                            {% endfor %}
+                                            {% if arrangers[row.Song.id] %}
+                                                <span>Arranged by </span>
+                                                {% for a in arrangers[row.Song.id] %}
+                                                    <span>{{ a }}</span><span class="comma">,</span>
+                                                {% endfor %}
+                                            {% endif %}
                                         </span>
                                     {% else %}
                                         Unknown composer
