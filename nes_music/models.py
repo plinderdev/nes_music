@@ -106,8 +106,8 @@ class Video(db.Model):
 
     def __repr__(self):
         return (f"<id = {self.id}, "
-                f"game = {self.game}, "
-                f"song = {self.song}, "
+                f"game = {self.game_id}, "
+                f"song = {self.song_id}, "
                 f"link = {self.link}>")
 
 

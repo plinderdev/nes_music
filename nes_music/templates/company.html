@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% set active_page = "songs_alphabetically" %}
+{% set active_page = "company" %}
 
 {% block content %}
 {% set alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] %}
@@ -18,6 +18,11 @@
 {% for letter in alphabet %}
     {% if letter in company_first_letters %}
         <p id="{{ letter }}" class="pixel_font text-light h4 mt-5">{{ letter }}</p>
+        <hr class="border border-danger opacity-50 mb-4">
+
+        {% for c in companies %}
+            {% if c.Company.name[0] == letter %}
+                <p class="pixel_font text-light h5 mt-4">{{ c.Company.name }}</p>
 
         <div class="table-responsive">
             <table class="table table-light table-striped-columns rounded-3 overflow-hidden">
@@ -37,7 +42,10 @@
 
                 <tbody class="table-group-divider">
                     {% for row in table %}
-                        {% if row.Company.name[0] == letter %}
+{#                        <p class="text-light">{{ row.Game.developer.name }}</p>#}
+{#                        <p class="text-light">{{ row.Game.publisher.name }}</p>#}
+{#                        {% if row.Game.developer.name[0] == letter or row.Game.publisher.name[0] == letter %}#}
+                            {% if row.Game.developer.name == c.Company.name or row.Game.publisher.name == c.Company.name %}
                             <tr>
                                 <td>{{ row.Game.name }}</td>
                                 <td>{{ row.Song.name }}</td>
@@ -66,11 +74,14 @@
                                     <a class="link-secondary" href="{{ row.Video.link }}" target="_blank">Video</a>
                                 </td>
                             </tr>
-                        {% endif %}
+                                {% endif %}
+{#                        {% endif %}#}
                     {% endfor %}
                 </tbody>
             </table>
         </div>
+            {% endif %}
+        {% endfor %}
     {% endif %}
 {% endfor %}
 {% endblock content %}

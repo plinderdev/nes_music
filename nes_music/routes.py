@@ -12,11 +12,11 @@ from nes_music.models import (Game, Song, SongMusician, Musician, Company,
 @app.route("/index")
 def index():
     table = db.session.execute(
-        select(Game, Song, Video)
-        .filter(Song.game_id == Game.id,
-                Video.song_id == Song.id)
-        .order_by(Video.upload_date.desc())
-        ).all()
+            select(Game, Song, Video)
+            .filter(Song.game_id == Game.id,
+                 Video.song_id == Song.id)
+            .order_by(Video.upload_date.desc())
+            ).all()
 
     all_composers, all_arrangers = get_all_musicians()
 
@@ -26,14 +26,14 @@ def index():
                            arrangers=all_arrangers)
 
 
-@app.route("/games_alphabetically")
-def games_alphabetically():
+@app.route("/game")
+def game():
     table = db.session.execute(
-        select(Game, Song, Video)
-        .filter(Song.game_id == Game.id,
-                Video.song_id == Song.id)
-        .order_by(Game.name, Video.upload_date.desc())
-        ).all()
+            select(Game, Song, Video)
+            .filter(Song.game_id == Game.id,
+                    Video.song_id == Song.id)
+            .order_by(Game.name, Video.upload_date.desc())
+            ).all()
 
     all_composers, all_arrangers = get_all_musicians()
 
@@ -42,7 +42,7 @@ def games_alphabetically():
         if row.Game.name[0] not in game_first_letters:
             game_first_letters.append(row.Game.name[0])
 
-    return render_template("games_alphabetically.html",
+    return render_template("game.html",
                            table=table,
                            composers=all_composers,
                            arrangers=all_arrangers,
@@ -51,28 +51,76 @@ def games_alphabetically():
 
 @app.route("/company")
 def company():
-    table = db.session.execute(
-        select(Company, Game, Song, Video)
-        .filter(Song.game_id == Game.id,
-                Video.song_id == Song.id)
-        .order_by(Company.name, Video.upload_date.desc())
-        ).all()
+    companies = db.session.execute(
+                select(Company)
+                .order_by(Company.name)
+                ).all()
+    # for c in companies:
+        # print(c.Company.name)
+
+    company_ids = []
+    for c in companies:
+        company_ids.append(c.Company.id)
+    # print(company_ids)
+
+    companies_list = []
+    for company_id in company_ids:
+        developer = db.session.execute(
+                    select(Game, Song, Video)
+                    .filter(Song.game_id == Game.id,
+                            Video.song_id == Song.id,
+                            Game.developer_id == company_id)
+                    ).all()
+        if developer:
+            companies_list.append(developer)
+    # print(developers)
+    #
+    # publishers = []
+    # for company_id in company_ids:
+        publisher = db.session.execute(
+                    select(Game, Song, Video)
+                    .filter(Song.game_id == Game.id,
+                            Video.song_id == Song.id,
+                            Game.publisher_id == company_id)
+                    ).all()
+        if publisher:
+            companies_list.append(publisher)
+    # print(publishers)
+
+    new_companies_list = []
+    for company in companies_list:
+        for row in company:
+            if row not in new_companies_list:
+            # if row.Game.developer_id == row.Game.publisher_id:
+            #     if row not in new_companies_list:
+                new_companies_list.append(row)
+            # else:
+            #     new_companies_list.append(row)
+                print(row)
+
+    # for row in new_companies_list:
+    #     print(row.Game.name)
 
     all_composers, all_arrangers = get_all_musicians()
 
-    for row in table:
-        print(row.Company.name)
-
+    letters = db.session.execute(
+            select(Game, Song, Video)
+            .filter(Song.game_id == Game.id,
+                    Video.song_id == Song.id)
+            ).all()
     company_first_letters = []
-    for row in table:
-        if row.Company.name[0] not in company_first_letters:
-            company_first_letters.append(row.Company.name[0])
+    for row in letters:
+        if row.Game.developer.name[0] or row.Game.publisher.name[0] not in company_first_letters:
+            company_first_letters.append(row.Game.developer.name[0])
+            company_first_letters.append(row.Game.publisher.name[0])
 
     return render_template("company.html",
-                           table=table,
+                           companies=companies,
+                           table=new_companies_list,
                            composers=all_composers,
                            arrangers=all_arrangers,
                            company_first_letters=company_first_letters)
+
 
 
 def get_all_musicians():
