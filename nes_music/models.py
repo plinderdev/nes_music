@@ -59,7 +59,8 @@ class SongMusician(db.Model):
 
 class Musician(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
+    last_name = db.Column(db.String)
+    first_name = db.Column(db.String)
 
     as_composer = db.relationship("SongMusician",
                                   foreign_keys=[SongMusician.composer_id],
@@ -70,7 +71,8 @@ class Musician(db.Model):
 
     def __repr__(self):
         return (f"<id = {self.id}, "
-                f"name = {self.name}>")
+                f"last_name = {self.last_name}, "
+                f"first_name = {self.first_name}>")
 
 
 class Company(db.Model):

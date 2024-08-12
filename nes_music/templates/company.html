@@ -53,7 +53,7 @@
                                     {% if composers[row.Song.id] %}
                                         <span>
                                             {% for c in composers[row.Song.id] %}
-                                                <span>{{ c }}</span><span class="comma">,</span>
+                                                <span>{{ c.first_name }} {{ c.last_name }}</span><span class="comma">,</span>
                                             {% endfor %}
                                         </span>
                                         <br>
@@ -61,7 +61,7 @@
                                             {% if arrangers[row.Song.id] %}
                                                 <span>Arranged by </span>
                                                 {% for a in arrangers[row.Song.id] %}
-                                                    <span>{{ a }}</span><span class="comma">,</span>
+                                                    <span>{{ a.first_name }} {{ a.last_name }}</span><span class="comma">,</span>
                                                 {% endfor %}
                                             {% endif %}
                                         </span>
