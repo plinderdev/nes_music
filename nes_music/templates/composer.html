@@ -5,7 +5,7 @@
 {% block content %}
 {% set alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] %}
 
-<p class="pixel_font text-light">
+<p class="pixel-font text-light">
     {% for letter in alphabet %}
         {% if letter in musician_first_letters %}
             <a class="link-light" href="#{{ letter }}">{{ letter }}</a>
@@ -15,14 +15,17 @@
     {% endfor %}
 </p>
 
+<p class="text-white mt-4 mb-0">Composers: {{ count_comp }}</p>
+<p class="text-white">Arrangers: {{ count_arr }}</p>
+
 {% for letter in alphabet %}
     {% if letter in musician_first_letters %}
-        <p id="{{ letter }}" class="pixel_font text-light h4 mt-5">{{ letter }}</p>
+        <p id="{{ letter }}" class="pixel-font text-light h4 mt-5">{{ letter }}</p>
         <hr class="border border-danger opacity-50 mb-4">
 
         {% for m in musicians %}
             {% if m.Musician.last_name[0] == letter %}
-                <p class="pixel_font text-light h5 mt-4">{{ m.Musician.last_name }}, {{ m.Musician.first_name }}</p>
+                <p class="pixel-font text-light h5 mt-4">{{ m.Musician.last_name }}, {{ m.Musician.first_name }}</p>
 
                 <div class="table-responsive">
                     <table class="table table-secondary table-striped-columns rounded-3 overflow-hidden mb-2">
