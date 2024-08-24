@@ -112,8 +112,8 @@ def composer():
                 .order_by(Musician.last_name)
                 ).all()
 
-    for m in musicians:
-        print(m.Musician.last_name, m.Musician.first_name)
+    # for m in musicians:
+    #     print(m.Musician.last_name, m.Musician.first_name)
 
     table = db.session.execute(
             select(Game, Song, Video)
@@ -159,7 +159,14 @@ def composer():
     for row in musicians:
         if row.Musician.last_name[0] not in musician_first_letters:
             musician_first_letters.append(row.Musician.last_name[0])
-    print(musician_first_letters)
+    # print(musician_first_letters)
+
+    # for m in musicians:
+    for c in composers:
+        for row in c:
+            print(row)
+            # if m.Musician.last_name in c:
+            #     print(m)
 
     return render_template("composer.html",
                            musicians=musicians,

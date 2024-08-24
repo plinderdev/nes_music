@@ -31,7 +31,7 @@
                                 <th scope="col">Row</th>
                                 <th scope="col">Game</th>
                                 <th scope="col">Song</th>
-                                <th scope="col">Role</th>
+                                <th scope="col">Composer(s)</th>
                                 <th scope="col">Developer</th>
                                 <th scope="col">Publisher</th>
                                 <th scope="col">Year</th>
@@ -40,45 +40,45 @@
                             </tr>
                         </thead>
 
-        {#                <tbody class="table-group-divider">#}
-        {#                    {% for row in table %}#}
-        {#                        {% if row.Musician.last_name[0] == letter %}#}
-        {#                            {% if row.Game.developer.name == c.Company.name or row.Game.publisher.name == c.Company.name %}#}
-        {#                            <tr>#}
-        {#                                <td>{{ row.Game.name }}</td>#}
-        {#                                <td>{{ row.Song.name }}</td>#}
-        {#                                <td>#}
-        {#                                    {% if composers[row.Song.id] %}#}
-        {#                                        <span>#}
-        {#                                            {% for c in composers[row.Song.id] %}#}
-        {#                                                <span>{{ c.first_name }} {{ c.last_name }}</span><span class="comma">,</span>#}
-        {#                                            {% endfor %}#}
-        {#                                        </span>#}
-        {#                                        <br>#}
-        {#                                        <span>#}
-        {#                                            {% if arrangers[row.Song.id] %}#}
-        {#                                                <span>Arranged by </span>#}
-        {#                                                {% for a in arrangers[row.Song.id] %}#}
-        {#                                                    <span>{{ a.first_name }} {{ a.last_name }}</span><span class="comma">,</span>#}
-        {#                                                {% endfor %}#}
-        {#                                            {% endif %}#}
-        {#                                        </span>#}
-        {#                                    {% else %}#}
-        {#                                        Unknown composer#}
-        {#                                    {%  endif %}#}
-        {#                                </td>#}
-        {#                                <td>{{ row.Game.developer.name }}</td>#}
-        {#                                <td>{{ row.Game.publisher.name }}</td>#}
-        {#                                <td>{{ row.Game.year }}</td>#}
-        {#                                <td>{{ row.Video.upload_date.strftime('%-m/%d/%y') }}</td>#}
-        {#                                <td>#}
-        {#                                    <a class="link-secondary" href="{{ row.Video.link }}" target="_blank">Video</a>#}
-        {#                                </td>#}
-        {#                            </tr>#}
-        {#                                {% endif %}#}
-        {#                        {% endif %}#}
-        {#                    {% endfor %}#}
-        {#                </tbody>#}
+                        <tbody class="table-group-divider">
+                            {% for row in table %}
+                                {% for c in composers[row.Song.id] %}
+                                    {% if m.Musician.last_name == c.last_name %}
+                                        <tr>
+                                            <td>{{ row.Game.name }}</td>
+                                            <td>{{ row.Song.name }}</td>
+                                            <td>
+                                                {% if composers[row.Song.id] %}
+                                                    <span>
+                                                        {% for c in composers[row.Song.id] %}
+                                                            <span>{{ c.first_name }} {{ c.last_name }}</span><span class="comma">,</span>
+                                                        {% endfor %}
+                                                    </span>
+                                                    <br>
+                                                    <span>
+                                                        {% if arrangers[row.Song.id] %}
+                                                            <span>Arranged by </span>
+                                                            {% for a in arrangers[row.Song.id] %}
+                                                                <span>{{ a.first_name }} {{ a.last_name }}</span><span class="comma">,</span>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </span>
+                                                {% else %}
+                                                    Unknown composer
+                                                {%  endif %}
+                                            </td>
+                                            <td>{{ row.Game.developer.name }}</td>
+                                            <td>{{ row.Game.publisher.name }}</td>
+                                            <td>{{ row.Game.year }}</td>
+                                            <td>{{ row.Video.upload_date.strftime('%-m/%d/%y') }}</td>
+                                            <td>
+                                                <a class="link-secondary" href="{{ row.Video.link }}" target="_blank">Video</a>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endfor %}
+                        </tbody>
                     </table>
                 </div>
             {% endif %}
