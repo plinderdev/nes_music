@@ -51,7 +51,44 @@
                                                 {% if composers[row.Song.id] %}
                                                     <span>
                                                         {% for c in composers[row.Song.id] %}
-                                                            <span>{{ c.first_name }} {{ c.last_name }}</span><span class="comma">,</span>
+                                                            {% if m.Musician.last_name == c.last_name %}
+                                                                <span>{{ c.first_name }} {{ c.last_name }}</span><span class="comma text-body-tertiary">,</span>
+                                                            {% else %}
+                                                                <span class="text-body-tertiary">{{ c.first_name }} {{ c.last_name }}</span><span class="comma text-body-tertiary">,</span>
+                                                            {%  endif %}
+                                                        {% endfor %}
+                                                    </span>
+                                                    <br>
+                                                    <span>
+                                                        {% if arrangers[row.Song.id] %}
+                                                            <span class="text-body-tertiary">Arranged by </span>
+                                                            {% for a in arrangers[row.Song.id] %}
+                                                                <span class="text-body-tertiary">{{ a.first_name }} {{ a.last_name }}</span><span class="comma  text-body-tertiary">,</span>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </span>
+                                                {%  endif %}
+                                            </td>
+                                            <td>{{ row.Game.developer.name }}</td>
+                                            <td>{{ row.Game.publisher.name }}</td>
+                                            <td>{{ row.Game.year }}</td>
+                                            <td>{{ row.Video.upload_date.strftime('%-m/%d/%y') }}</td>
+                                            <td>
+                                                <a class="link-secondary" href="{{ row.Video.link }}" target="_blank">Video</a>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                {% for a in arrangers[row.Song.id] %}
+                                    {% if m.Musician.last_name == a.last_name %}
+                                        <tr>
+                                            <td>{{ row.Game.name }}</td>
+                                            <td>{{ row.Song.name }}</td>
+                                            <td>
+                                                {% if composers[row.Song.id] %}
+                                                    <span>
+                                                        {% for c in composers[row.Song.id] %}
+                                                            <span class="text-body-tertiary">{{ c.first_name }} {{ c.last_name }}</span><span class="comma text-body-tertiary">,</span>
                                                         {% endfor %}
                                                     </span>
                                                     <br>
@@ -59,12 +96,12 @@
                                                         {% if arrangers[row.Song.id] %}
                                                             <span>Arranged by </span>
                                                             {% for a in arrangers[row.Song.id] %}
-                                                                <span>{{ a.first_name }} {{ a.last_name }}</span><span class="comma">,</span>
+                                                                {% if m.Musician.last_name == a.last_name %}
+                                                                    <span>{{ a.first_name }} {{ a.last_name }}</span><span class="comma  text-body-tertiary">,</span>
+                                                                {%  endif %}
                                                             {% endfor %}
                                                         {% endif %}
                                                     </span>
-                                                {% else %}
-                                                    Unknown composer
                                                 {%  endif %}
                                             </td>
                                             <td>{{ row.Game.developer.name }}</td>
