@@ -112,8 +112,8 @@ def composer():
                 .order_by(Musician.last_name)
                 ).all()
 
-    # for m in musicians:
-    #     print(m.Musician.last_name, m.Musician.first_name)
+    for m in musicians:
+        print(m.Musician.last_name, m.Musician.first_name)
 
     table = db.session.execute(
             select(Game, Song, Video)
@@ -184,6 +184,7 @@ def get_all_musicians():
             select(SongMusician)
             .filter(SongMusician.song_id == Song.id,
                     Song.id == song_id)
+            .order_by(SongMusician.id)  # Entered into db in order I want
         )
 
         song_composers = []
