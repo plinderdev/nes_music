@@ -17,7 +17,7 @@
             <div class="mb-4">
                 <h1 class="text-white pixel-font">Plinder</h1>
                 <a class="btn btn-secondary mb-4" href="https://www.youtube.com/@plinderweb" target="_blank">@plinderweb</a>
-                <p class="text-white">Index of songs found at my YouTube channel.</p>
+                <p class="text-white">Index of songs found at my YouTube channel. Click on song titles for slightly more information about each song.</p>
             </div>
             <hr class="border border-danger opacity-100 mb-4">
             <div class="container mb-5 p-0">
@@ -46,6 +46,13 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+        const popover = new bootstrap.Popover('.popover-dismiss', {
+  trigger: 'focus'
+})
+    </script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
