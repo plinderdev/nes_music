@@ -160,6 +160,29 @@ def composer():
                            count_arrangers=count_arrangers)
 
 
+@app.route("/year")
+def year():
+    table = db.session.execute(
+            select(Game, Song, Video)
+            .filter(Song.game_id == Game.id,
+                    Video.song_id == Song.id)
+            .order_by(Game.name, Video.upload_date.desc())
+            ).all()
+
+    composers, arrangers = get_all_musicians()
+
+    list_of_years = []
+    for row in table:
+        if row.Game.year not in list_of_years:
+            list_of_years.append(row.Game.year)
+
+    return render_template("year.html",
+                           table=table,
+                           composers=composers,
+                           arrangers=arrangers,
+                           list_of_years=list_of_years)
+
+
 def get_all_musicians():
     song_query = db.session.execute(select(Song))
 
