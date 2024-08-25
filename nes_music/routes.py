@@ -137,21 +137,18 @@ def composer():
         if row.Musician.last_name[0] not in musician_first_letters:
             musician_first_letters.append(row.Musician.last_name[0])
 
-    count_comp = 0
-    comp_names = []
-    for c in composers:
-        for row in c:
-            if row.id not in comp_names:
-                comp_names.append(row.id)
-                count_comp += 1
+    def get_count(musician):
+        count = 0
+        musician_ids = []
+        for m in musician:
+            for row in m:
+                if row.id not in musician_ids:
+                    musician_ids.append(row.id)
+                    count += 1
+        return count
 
-    count_arr = 0
-    arr_names = []
-    for a in arrangers:
-        for row in a:
-            if row.id not in arr_names:
-                arr_names.append(row.id)
-                count_arr += 1
+    count_composers = get_count(composers)
+    count_arrangers = get_count(arrangers)
 
     return render_template("composer.html",
                            musicians=musicians,
@@ -159,8 +156,8 @@ def composer():
                            composers=composers,
                            arrangers=arrangers,
                            musician_first_letters=musician_first_letters,
-                           count_comp=count_comp,
-                           count_arr=count_arr)
+                           count_composers=count_composers,
+                           count_arrangers=count_arrangers)
 
 
 def get_all_musicians():
