@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% set active_page = "index" %}
+
+{% block content %}
+    <div class="table-responsive">
+        <table class="table table-secondary table-striped-columns rounded-3 overflow-hidden">
+            <thead>
+                <tr>
+                    <th scope="col">Row</th>
+                    <th scope="col">Game</th>
+                    <th scope="col">Song</th>
+                    <th scope="col">Composer(s)</th>
+                    <th scope="col">Developer</th>
+                    <th scope="col">Publisher</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Upload</th>
+                    <th scope="col">Link</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for row in table %}
+                    <tr>
+                        <td>{{ row.Game.name }}</td>
+                        <td tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="focus" data-bs-content="{{ row.Video.description }} {% if row.Video.desc_note %}{{ row.Video.desc_note }}{% endif %}">{{ row.Song.name }}</td>
+                        <td>
+                            {% if composers[row.Song.id] %}
+                                <span>
+                                    {% for c in composers[row.Song.id] %}
+                                        <span>{{ c.first_name }} {{ c.last_name }}</span><span class="comma">,</span>
+                                    {% endfor %}
+                                </span>
+                                <br>
+                                <span>
+                                    {% if arrangers[row.Song.id] %}
+                                        <span>Arranged by </span>
+                                        {% for a in arrangers[row.Song.id] %}
+                                            <span>{{ a.first_name }} {{ a.last_name }}</span><span class="comma">,</span>
+                                        {% endfor %}
+                                    {% endif %}
+                                </span>
+                            {% else %}
+                                Unknown composer
+                            {%  endif %}
+                        </td>
+                        <td>{{ row.Game.developer.name }}</td>
+                        <td>{{ row.Game.publisher.name }}</td>
+                        <td>{{ row.Game.year }}</td>
+                        <td>{{ row.Video.upload_date.strftime('%-m/%d/%y') }}</td>
+                        <td>
+                            <a class="link-secondary" href="{{ row.Video.link }}" target="_blank">Video</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

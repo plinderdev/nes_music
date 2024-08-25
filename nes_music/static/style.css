@@ -1,0 +1,37 @@
+/*
+Author: Plinder
+Program name: NES music index
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Press+Start+2P&display=swap');
+
+.pixel-font {
+    font-family: "Press Start 2P", sans-serif;
+}
+
+/*.red-text {*/
+/*    color: red;*/
+/*}*/
+
+/*a {*/
+/*    color: red;*/
+/*}*/
+
+/*a:hover {*/
+/*    color: #ce0000;*/
+/*}*/
+
+/* Without this, last table border visible beyond rounded table corners */
+table tbody tr:last-child {
+    border: none;
+}
+
+/*div table {*/
+/*    background-color: red;*/
+/*}*/
+
+/* For final comma in td span */
+.comma:last-child {
+    display: none;
+}
