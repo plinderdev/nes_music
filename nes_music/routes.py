@@ -57,42 +57,18 @@ def game():
 
 @app.route("/company")
 def company():
-    # Query used to create company_ids list and for comparison at company.html
+    # Query used for comparisons at company.html
     companies = db.session.execute(
                 select(Company)
                 .order_by(Company.name)
                 ).all()
 
-    company_ids = []
-    for c in companies:
-        company_ids.append(c.Company.id)
-
-    # These are the data objects:
-    table = []
-    for company_id in company_ids:
-        developer = db.session.execute(
-                    select(Game, Song, Video)
-                    .filter(Song.game_id == Game.id,
-                            Video.song_id == Song.id,
-                            Game.developer_id == company_id)
-                    .order_by(Game.name, Video.upload_date.desc())
-                    ).all()
-        if developer:
-            for row in developer:  # This pops each row out of developer list
-                if row not in table:
-                    table.append(row)
-
-        publisher = db.session.execute(
-                    select(Game, Song, Video)
-                    .filter(Song.game_id == Game.id,
-                            Video.song_id == Song.id,
-                            Game.publisher_id == company_id)
-                    .order_by(Game.name, Video.upload_date.desc())
-                    ).all()
-        if publisher:
-            for row in publisher:  # This pops each row out of publisher list
-                if row not in table:
-                    table.append(row)
+    table = db.session.execute(
+            select(Game, Song, Video)
+            .filter(Song.game_id == Game.id,
+                    Video.song_id == Song.id)
+            .order_by(Game.year, Game.name, Video.upload_date)
+            ).all()
 
     composers, arrangers = get_all_musicians()
 
@@ -103,7 +79,7 @@ def company():
         if row.Game.publisher.name[0] not in company_first_letters:
             company_first_letters.append(row.Game.publisher.name[0])
 
-    count_companies = len(company_ids)
+    count_companies = len(companies)
 
     return render_template("company.html",
                            companies=companies,
