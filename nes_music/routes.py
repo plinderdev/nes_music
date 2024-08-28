@@ -102,7 +102,7 @@ def composer():
             select(Game, Song, Video)
             .filter(Song.game_id == Game.id,
                     Video.song_id == Song.id)
-            .order_by(Video.upload_date.desc())
+            .order_by(Game.year, Video.upload_date)
             ).all()
 
     # Used at composer.html for comparison to musicians and to show table data
