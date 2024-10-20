@@ -58,7 +58,7 @@
                                                                 <span>{{ c.first_name }} {{ c.last_name }}</span><span class="comma text-body-tertiary">,</span>
                                                             {% else %}
                                                                 <span class="text-body-tertiary">{{ c.first_name }} {{ c.last_name }}</span><span class="comma text-body-tertiary">,</span>
-                                                            {%  endif %}
+                                                            {% endif %}
                                                         {% endfor %}
                                                     </span>
                                                     <br>
@@ -70,7 +70,7 @@
                                                             {% endfor %}
                                                         {% endif %}
                                                     </span>
-                                                {%  endif %}
+                                                {% endif %}
                                             </td>
                                             <td>{{ row.Game.developer.name }}</td>
                                             <td>{{ row.Game.publisher.name }}</td>
