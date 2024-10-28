@@ -25,7 +25,11 @@
 
         {% for m in musicians %}
             {% if m.Musician.last_name[0] == letter %}
-                <p class="pixel-font text-light h5 mt-4">{{ m.Musician.last_name }}, {{ m.Musician.first_name }}</p>
+                {% if m.Musician.first_name %}
+                    <p class="pixel-font text-light h5 mt-4">{{ m.Musician.last_name }}, {{ m.Musician.first_name }}</p>
+                {% else %}
+                    <p class="pixel-font text-light h5 mt-4">{{ m.Musician.last_name }}</p>
+                {% endif %}
 
                 <div class="table-responsive">
                     <table class="table table-secondary table-striped-columns rounded-3 overflow-hidden mb-2">
@@ -55,9 +59,17 @@
                                                     <span>
                                                         {% for c in composers[row.Song.id] %}
                                                             {% if m.Musician.last_name == c.last_name %}
-                                                                <span>{{ c.first_name }} {{ c.last_name }}</span><span class="comma text-body-tertiary">,</span>
+                                                                {% if c.first_name %}
+                                                                    <span>{{ c.first_name }} {{ c.last_name }}</span><span class="comma text-body-tertiary">,</span>
+                                                                {% else %}
+                                                                    <span>{{ c.last_name }}</span><span class="comma text-body-tertiary">,</span>
+                                                                {% endif %}
                                                             {% else %}
-                                                                <span class="text-body-tertiary">{{ c.first_name }} {{ c.last_name }}</span><span class="comma text-body-tertiary">,</span>
+                                                                {% if c.first_name %}
+                                                                    <span class="text-body-tertiary">{{ c.first_name }} {{ c.last_name }}</span><span class="comma text-body-tertiary">,</span>
+                                                                {% else %}
+                                                                    <span class="text-body-tertiary">{{ c.last_name }}</span><span class="comma text-body-tertiary">,</span>
+                                                                {% endif %}
                                                             {% endif %}
                                                         {% endfor %}
                                                     </span>
@@ -66,7 +78,7 @@
                                                         {% if arrangers[row.Song.id] %}
                                                             <span class="text-body-tertiary">Arranged by </span>
                                                             {% for a in arrangers[row.Song.id] %}
-                                                                <span class="text-body-tertiary">{{ a.first_name }} {{ a.last_name }}</span><span class="comma  text-body-tertiary">,</span>
+                                                                <span class="text-body-tertiary">{{ a.first_name }} {{ a.last_name }}</span><span class="comma text-body-tertiary">,</span>
                                                             {% endfor %}
                                                         {% endif %}
                                                     </span>

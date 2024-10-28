@@ -45,7 +45,11 @@
                                     {% if composers[row.Song.id] %}
                                         <span>
                                             {% for c in composers[row.Song.id] %}
-                                                <span>{{ c.first_name }} {{ c.last_name }}</span><span class="comma">,</span>
+                                                {% if c.first_name %}
+                                                    <span>{{ c.first_name }} {{ c.last_name }}</span><span class="comma">,</span>
+                                                {% else %}
+                                                    <span>{{ c.last_name }}</span><span class="comma">,</span>
+                                                {% endif %}
                                             {% endfor %}
                                         </span>
                                         <br>
