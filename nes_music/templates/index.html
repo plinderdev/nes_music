@@ -22,7 +22,12 @@
                 {% for row in table %}
                     <tr>
                         <td>{{ row.Game.name }}</td>
-                        <td tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="focus" data-bs-content="{{ row.Video.description }} {% if row.Video.desc_note %}{{ row.Video.desc_note }}{% endif %}">{{ row.Song.name }}</td>
+                        <td tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="focus" data-bs-html="true" data-bs-content="{{ row.Video.description }}
+                            {% if row.Video.desc_note %}
+                                <br><br>{{ row.Video.desc_note }}
+                            {% endif %}">
+                        {{ row.Song.name }}
+                        </td>
                         <td>
                             {% if composers[row.Song.id] %}
                                 <span>
