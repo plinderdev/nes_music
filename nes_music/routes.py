@@ -94,7 +94,7 @@ def composer():
     # Query of all musicians used for comparison and more at composer.html
     musicians = db.session.execute(
                 select(Musician)
-                .order_by(Musician.last_name)
+                .order_by(Musician.last_name, Musician.first_name)
                 ).all()
 
     # Query for usual table data

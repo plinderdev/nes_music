@@ -50,7 +50,7 @@
                         <tbody class="table-group-divider">
                             {% for row in table %}
                                 {% for c in composers[row.Song.id] %}
-                                    {% if m.Musician.last_name == c.last_name %}
+                                    {% if m.Musician.last_name == c.last_name and m.Musician.first_name == c.first_name %}
                                         <tr>
                                             <td>{{ row.Game.name }}</td>
                                             <td tabindex="0" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="focus" data-bs-html="true" data-bs-content="{{ row.Video.description }}
