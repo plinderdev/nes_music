@@ -75,7 +75,7 @@
                                 <td>{{ row.Game.developer.name }}</td>
                                 <td>{{ row.Game.publisher.name }}</td>
                                 <td>{{ row.Game.year }}</td>
-                                <td>{{ row.Video.upload_date.strftime('%-m/%d/%y') }}</td>
+                                <td>{{ row.Video.upload_date.strftime('%-m/%-d/%y') }}</td>
                                 <td>
                                     <a class="link-secondary" href="{{ row.Video.link }}" target="_blank">Video</a>
                                 </td>
